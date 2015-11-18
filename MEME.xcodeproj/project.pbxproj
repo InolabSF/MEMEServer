@@ -7,12 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E61A9B191BFD0557000BEF7D /* MMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61A9B181BFD0557000BEF7D /* MMViewController.m */; };
+		E61A9B1C1BFD0605000BEF7D /* MMDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61A9B1B1BFD0605000BEF7D /* MMDataViewController.m */; };
 		E644D3CA1BFA539A0034C0D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644D3C11BFA539A0034C0D2 /* AppDelegate.swift */; };
 		E644D3CB1BFA539A0034C0D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E644D3C21BFA539A0034C0D2 /* LaunchScreen.storyboard */; };
 		E644D3CE1BFA539A0034C0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E644D3C71BFA539A0034C0D2 /* Assets.xcassets */; };
 		E644D3CF1BFA539A0034C0D2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E644D3C91BFA539A0034C0D2 /* Info.plist */; };
-		E690BCF61BFA6975002BE584 /* MMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E690BCF51BFA6975002BE584 /* MMViewController.m */; };
-		E690BCFC1BFA697D002BE584 /* MMDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E690BCFA1BFA697D002BE584 /* MMDataViewController.m */; };
 		E690BCFE1BFA6A6C002BE584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E690BCFD1BFA6A6C002BE584 /* Main.storyboard */; };
 		E690BCFF1BFA6C64002BE584 /* MEMELib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F54EEA1BFA5F6A00051BB0 /* MEMELib.framework */; };
 		E690BD001BFA6C64002BE584 /* MEMELib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6F54EEA1BFA5F6A00051BB0 /* MEMELib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -35,15 +35,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E61A9B171BFD0557000BEF7D /* MMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMViewController.h; sourceTree = "<group>"; };
+		E61A9B181BFD0557000BEF7D /* MMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMViewController.m; sourceTree = "<group>"; };
+		E61A9B1A1BFD0605000BEF7D /* MMDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDataViewController.h; sourceTree = "<group>"; };
+		E61A9B1B1BFD0605000BEF7D /* MMDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDataViewController.m; sourceTree = "<group>"; };
 		E644D3AB1BFA53100034C0D2 /* MEME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEME.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E644D3C11BFA539A0034C0D2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E644D3C21BFA539A0034C0D2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E644D3C71BFA539A0034C0D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E644D3C91BFA539A0034C0D2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E690BCF41BFA6975002BE584 /* MMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMViewController.h; sourceTree = "<group>"; };
-		E690BCF51BFA6975002BE584 /* MMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMViewController.m; sourceTree = "<group>"; };
-		E690BCF91BFA697D002BE584 /* MMDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDataViewController.h; sourceTree = "<group>"; };
-		E690BCFA1BFA697D002BE584 /* MMDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDataViewController.m; sourceTree = "<group>"; };
 		E690BCFD1BFA6A6C002BE584 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E6F54EE11BFA5A7300051BB0 /* MMConstant-Private.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MMConstant-Private.swift"; sourceTree = "<group>"; };
 		E6F54EE31BFA5A8B00051BB0 /* MMConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMConstant.swift; sourceTree = "<group>"; };
@@ -107,8 +107,8 @@
 		E644D3C41BFA539A0034C0D2 /* Root */ = {
 			isa = PBXGroup;
 			children = (
-				E690BCF41BFA6975002BE584 /* MMViewController.h */,
-				E690BCF51BFA6975002BE584 /* MMViewController.m */,
+				E61A9B171BFD0557000BEF7D /* MMViewController.h */,
+				E61A9B181BFD0557000BEF7D /* MMViewController.m */,
 			);
 			path = Root;
 			sourceTree = "<group>";
@@ -133,8 +133,8 @@
 		E690BCF01BFA685B002BE584 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				E690BCF91BFA697D002BE584 /* MMDataViewController.h */,
-				E690BCFA1BFA697D002BE584 /* MMDataViewController.m */,
+				E61A9B1A1BFD0605000BEF7D /* MMDataViewController.h */,
+				E61A9B1B1BFD0605000BEF7D /* MMDataViewController.m */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -221,9 +221,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E6F54EE21BFA5A7300051BB0 /* MMConstant-Private.swift in Sources */,
-				E690BCFC1BFA697D002BE584 /* MMDataViewController.m in Sources */,
 				E644D3CA1BFA539A0034C0D2 /* AppDelegate.swift in Sources */,
-				E690BCF61BFA6975002BE584 /* MMViewController.m in Sources */,
+				E61A9B1C1BFD0605000BEF7D /* MMDataViewController.m in Sources */,
+				E61A9B191BFD0557000BEF7D /* MMViewController.m in Sources */,
 				E6F54EE41BFA5A8B00051BB0 /* MMConstant.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
