@@ -67,19 +67,19 @@
         for (CBPeripheral *peripheral in self.peripherals) {
             [uuids addObject:[peripheral.identifier UUIDString]];
         }
-        [self sendWebSocketMessage:@{@"delegate":@"memePeripheralFound:withDeviceAddress:", @"peripheral":[peripheral.identifier UUIDString], @"address":address,}];
+        [self sendWebSocketMessage:@{@"delegate":@"memePeripheralFound:withDeviceAddress:", @"args":@[[peripheral.identifier UUIDString], address]}];
     }
 }
 
 - (void)memePeripheralConnected:(CBPeripheral *)peripheral
 {
     [[MEMELib sharedInstance] startDataReport];
-    [self sendWebSocketMessage:@{@"delegate":@"memePeripheralConnected:", @"peripheral":[peripheral.identifier UUIDString],}];
+    [self sendWebSocketMessage:@{@"delegate":@"memePeripheralConnected:", @"args":@[[peripheral.identifier UUIDString]]}];
 }
 
 - (void)memePeripheralDisconnected:(CBPeripheral *)peripheral
 {
-    [self sendWebSocketMessage:@{@"delegate":@"memePeripheralDisconnected:", @"peripheral":[peripheral.identifier UUIDString],}];
+    [self sendWebSocketMessage:@{@"delegate":@"memePeripheralDisconnected:", @"args":@[[peripheral.identifier UUIDString]]}];
 }
 
 - (void)memeRealTimeModeDataReceived:(MEMERealTimeData *)data
@@ -101,12 +101,12 @@
             @"accY":@(data.accY),
             @"accZ":@(data.accZ),
     };
-    [self sendWebSocketMessage:@{@"delegate":@"memeRealTimeModeDataReceived:", @"data":realTimeData,}];
+    [self sendWebSocketMessage:@{@"delegate":@"memeRealTimeModeDataReceived:", @"args":@[realTimeData],}];
 }
 
 - (void)memeAppAuthorized:(MEMEStatus)status
 {
-    [self sendWebSocketMessage:@{@"delegate":@"memeAppAuthorized:", @"status":@(status),}];
+    [self sendWebSocketMessage:@{@"delegate":@"memeAppAuthorized:", @"args":@[@(status)],}];
 }
 
 - (void)memeCommandResponse:(MEMEResponse)response
@@ -115,7 +115,7 @@
         @"eventCode":@(response.eventCode),
     @"commandResult":@(response.commandResult),
     };
-    [self sendWebSocketMessage:@{@"delegate":@"memeCommandResponse:", @"response":r,}];
+    [self sendWebSocketMessage:@{@"delegate":@"memeCommandResponse:", @"args":@[r],}];
 }
 
 
@@ -223,9 +223,48 @@
         int connectedDeviceSubType = [[MEMELib sharedInstance] getConnectedDeviceSubType];
         body = @{@"api":@"getConnectedDeviceSubType", @"return":@(connectedDeviceSubType)};
     }
-    else if ([path isEqualToString:@"/delegateTest"]) {
-        [self sendWebSocketMessage:@{@"delegate":@"memePeripheralFound:withDeviceAddress:", @"peripheral":@"your_uuid_string", @"address":@"address",}];
+    /*
+    //
+    else if ([path isEqualToString:@"/memeAppAuthorized:"]) {
+        [self sendWebSocketMessage:@{@"delegate":@"memeAppAuthorized:", @"args":@[@(0)],}];
     }
+    else if ([path isEqualToString:@"/memeFirmwareAuthorized:"]) {
+        [self sendWebSocketMessage:@{@"delegate":@"memeFirmwareAuthorized:", @"args":@[@(0)],}];
+    }
+    else if ([path isEqualToString:@"/memePeripheralFound:withDeviceAddress:"]) {
+        [self sendWebSocketMessage:@{@"delegate":@"memePeripheralFound:withDeviceAddress:", @"args":@[@"398315C3-0734-400E-9639-6490BAD79086", @"address"],}];
+    }
+    else if ([path isEqualToString:@"/memePeripheralConnected:"]) {
+        [self sendWebSocketMessage:@{@"delegate":@"memePeripheralConnected:", @"args":@[@"398315C3-0734-400E-9639-6490BAD79086"],}];
+    }
+    else if ([path isEqualToString:@"/memePeripheralDisconnected:"]) {
+        [self sendWebSocketMessage:@{@"delegate":@"memePeripheralDisconnected:", @"args":@[@"398315C3-0734-400E-9639-6490BAD79086"],}];
+    }
+    else if ([path isEqualToString:@"/memeRealTimeModeDataReceived:"]) {
+        NSDictionary *realTimeData = @{
+                                       @"fitError":@(1),
+                                       @"isWalking":@(2),
+                                       @"powerLeft":@(3),
+                                       @"eyeMoveUp":@(4),
+                                       @"eyeMoveDown":@(5),
+                                       @"eyeMoveLeft":@(6),
+                                       @"eyeMoveRight ":@(7),
+                                       @"blinkSpeed":@(8),
+                                       @"blinkStrength":@(9),
+                                       @"roll":@(0.1),
+                                       @"pitch":@(0.2),
+                                       @"yaw":@(0.3),
+                                       @"accX":@(1),
+                                       @"accY":@(2),
+                                       @"accZ":@(3),
+        };
+        [self sendWebSocketMessage:@{@"delegate":@"memeRealTimeModeDataReceived:", @"args":@[realTimeData],}];
+    }
+    else if ([path isEqualToString:@"/memeCommandResponse:"]) {
+        [self sendWebSocketMessage:@{@"delegate":@"memeCommandResponse:", @"args":@[@{@"eventCode":@(0), @"commandResult":@(TRUE),}],}];
+    }
+    //
+    */
 
     if (body) {
         NSData *data = [NSJSONSerialization dataWithJSONObject:body

@@ -12,8 +12,9 @@ func MMLOG(body: Any) {
 
 
 /// MARK: - MEME
-
+/*
 struct MEME {
     static let AppID =          kMEMEAppID
     static let AppSecret =      kMEMEAppSecret
 }
+*/

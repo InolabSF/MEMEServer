@@ -1,4 +1,4 @@
-# JINS MEME Server
+# JINS MEME iPhone API Server
 
 
 ## Installation
@@ -6,8 +6,8 @@
 [1] Download this project
 
 ```
-$ git clone https://github.com/InolabSF/MEME.git
-$ cd MEME
+$ git clone https://github.com/InolabSF/MEMEServer.git
+$ cd MEMEServer
 ```
 
 [2] Install [CocoaPods](https://guides.cocoapods.org/using/getting-started.html)
@@ -36,6 +36,7 @@ $ open MEME.xcworkspace
 ## Server
 
 IP Address: your iPhone's IP Address
+
 Port: 3000
 
 ### MEMELib
@@ -60,6 +61,9 @@ responseBody: {"api":"startScanningPeripherals:", "return":MEMEStatus}
 
 API: /connect?peripheral=YOUR_PERIPHERAL_UUID_STRING
 responseBody: {"api":"connectPeripheral:", "return":MEMEStatus}
+
+API: /disconnectPeripheral
+responseBody: {"api":"disconnectPeripheral", "return":MEMEStatus}
 
 API: /getConnectedByOthers
 responseBody: {"api":"getConnectedByOthers", "return":PERIPHERALS_UUID_STRING_ARRAY}
@@ -93,22 +97,22 @@ It's implemented by Web Socket Server.
 ```
 socketMessage: {
     "delegate":"memePeripheralFound:withDeviceAddress:",
-    "peripheral":PERIPHERALS_UUID_STRING, "address":ADDRESS_STRING
+    "args":[PERIPHERALS_UUID_STRING, ADDRESS_STRING]
 }
 
 socketMessage: {
     "delegate":"memePeripheralConnected:",
-    "peripheral":PERIPHERALS_UUID_STRING
+    "args":[PERIPHERALS_UUID_STRING]
 }
 
 socketMessage: {
     "delegate":"memePeripheralDisconnected:",
-    "peripheral":PERIPHERALS_UUID_STRING
+    "args":[PERIPHERALS_UUID_STRING]
 }
 
 socketMessage: {
     "delegate":"memeRealTimeModeDataReceived:",
-    "data":{
+    "args":[{
         "fitError":(REAL_TIME_DATA.fitError),
        "isWalking":(REAL_TIME_DATA.isWalking),
        "powerLeft":(REAL_TIME_DATA.powerLeft),
@@ -124,19 +128,19 @@ socketMessage: {
             "accX":(REAL_TIME_DATA.accX),
             "accY":(REAL_TIME_DATA.accY),
             "accZ":(REAL_TIME_DATA.accZ)
-    }
+    }]
 }
 
 socketMessage: {
     "delegate":"memeAppAuthorized:",
-    "status":MEMEStatus
+    "args":[MEMEStatus]
 }
 
 socketMessage: {
     "delegate":"memeCommandResponse:",
-    "response":{
+    "args":[{
         "eventCode":(MEMEResponse.eventCode),
         "commandResult":(MEMEResponse.commandResult),
-    }
+    }]
 }
 ```
