@@ -8,6 +8,8 @@
 
 #import "MMViewController.h"
 #import <MEMELib/MEMELib.h>
+#import "MMServer.h"
+
 
 @interface MMViewController ()
 
@@ -20,10 +22,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    //[MEMELib sharedInstance].delegate = self;
 
-    [MEMELib sharedInstance].delegate = self;
-
-    self.peripherals = @[].mutableCopy;
+    self.peripherals = @[].mutableCopy;//[[MMServer sharedInstance] peripherals];
     
     self.title      = @"MEME Demo";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle: @"Scan" style:UIBarButtonItemStylePlain target: self action:@selector(scanButtonPressed:)];
@@ -37,10 +39,10 @@
 
 - (IBAction)scanButtonPressed:(id)sender {
     // Start Scanning
-    MEMEStatus status = [[MEMELib sharedInstance] startScanningPeripherals];
-    [self checkMEMEStatus: status];
+//    MEMEStatus status = [[MEMELib sharedInstance] startScanningPeripherals];
+//   [self checkMEMEStatus: status];
 }
-
+/*
 #pragma mark
 #pragma mark MEMELib Delegates
 
@@ -94,7 +96,7 @@
 
 - (void) memeAppAuthorized:(MEMEStatus)status
 {
-    [self checkMEMEStatus: status];
+ //   [self checkMEMEStatus: status];
 }
 
 - (void) memeCommandResponse:(MEMEResponse)response
@@ -112,7 +114,7 @@
             break;
     }
 }
-
+*/
 #pragma mark
 #pragma mark Peripheral List
 
@@ -138,9 +140,9 @@
 
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-     CBPeripheral *peripheral = [self.peripherals objectAtIndex: indexPath.row];
-     MEMEStatus status = [[MEMELib sharedInstance] connectPeripheral: peripheral ];
-    [self checkMEMEStatus: status];
+//     CBPeripheral *peripheral = [self.peripherals objectAtIndex: indexPath.row];
+//     MEMEStatus status = [[MEMELib sharedInstance] connectPeripheral: peripheral ];
+//    [self checkMEMEStatus: status];
     
     NSLog(@"Start connecting to MEME Device...");
 }
@@ -154,7 +156,7 @@
 }
 
 #pragma mark UTILITY
-
+/*
 - (void) checkMEMEStatus: (MEMEStatus) status
 {
     if (status == MEME_ERROR_APP_AUTH){
@@ -169,7 +171,7 @@
         NSLog(@"Status: MEME_OK");
     }
 }
-
+*/
 
 
 @end

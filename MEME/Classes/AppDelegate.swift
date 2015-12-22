@@ -13,8 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// MARK: - life cycle
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        MEMELib.setAppClientId(MEME.AppID, clientSecret: MEME.AppSecret)
-
+        MMServer.sharedInstance().start()
+        
         return true
     }
 
@@ -22,9 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
+        MMServer.sharedInstance().stop()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
+        MMServer.sharedInstance().start()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {

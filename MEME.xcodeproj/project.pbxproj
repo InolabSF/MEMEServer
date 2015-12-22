@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BF505D1AB10C96CF8D007FD /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 510B827E212CA8AB15C9C7BB /* libPods.a */; };
 		E61A9B191BFD0557000BEF7D /* MMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61A9B181BFD0557000BEF7D /* MMViewController.m */; };
 		E61A9B1C1BFD0605000BEF7D /* MMDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E61A9B1B1BFD0605000BEF7D /* MMDataViewController.m */; };
+		E641358E1C28C116009C8148 /* MMServer.m in Sources */ = {isa = PBXBuildFile; fileRef = E641358D1C28C116009C8148 /* MMServer.m */; };
+		E64135931C28D21B009C8148 /* MMHTTPConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = E64135901C28D21B009C8148 /* MMHTTPConnection.m */; };
+		E64135941C28D21B009C8148 /* MMWebSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = E64135921C28D21B009C8148 /* MMWebSocket.m */; };
 		E644D3CA1BFA539A0034C0D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644D3C11BFA539A0034C0D2 /* AppDelegate.swift */; };
 		E644D3CB1BFA539A0034C0D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E644D3C21BFA539A0034C0D2 /* LaunchScreen.storyboard */; };
 		E644D3CE1BFA539A0034C0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E644D3C71BFA539A0034C0D2 /* Assets.xcassets */; };
@@ -16,7 +20,6 @@
 		E690BCFE1BFA6A6C002BE584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E690BCFD1BFA6A6C002BE584 /* Main.storyboard */; };
 		E690BCFF1BFA6C64002BE584 /* MEMELib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F54EEA1BFA5F6A00051BB0 /* MEMELib.framework */; };
 		E690BD001BFA6C64002BE584 /* MEMELib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6F54EEA1BFA5F6A00051BB0 /* MEMELib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E6F54EE21BFA5A7300051BB0 /* MMConstant-Private.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F54EE11BFA5A7300051BB0 /* MMConstant-Private.swift */; };
 		E6F54EE41BFA5A8B00051BB0 /* MMConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6F54EE31BFA5A8B00051BB0 /* MMConstant.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,17 +38,25 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		138186CB54DE476C844CA24B /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		510B827E212CA8AB15C9C7BB /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		A041ADCDF939E88A4B1BA4B8 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		E61A9B171BFD0557000BEF7D /* MMViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMViewController.h; sourceTree = "<group>"; };
 		E61A9B181BFD0557000BEF7D /* MMViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMViewController.m; sourceTree = "<group>"; };
 		E61A9B1A1BFD0605000BEF7D /* MMDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDataViewController.h; sourceTree = "<group>"; };
 		E61A9B1B1BFD0605000BEF7D /* MMDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDataViewController.m; sourceTree = "<group>"; };
+		E641358C1C28C116009C8148 /* MMServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMServer.h; sourceTree = "<group>"; };
+		E641358D1C28C116009C8148 /* MMServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMServer.m; sourceTree = "<group>"; };
+		E641358F1C28D21B009C8148 /* MMHTTPConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMHTTPConnection.h; sourceTree = "<group>"; };
+		E64135901C28D21B009C8148 /* MMHTTPConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMHTTPConnection.m; sourceTree = "<group>"; };
+		E64135911C28D21B009C8148 /* MMWebSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMWebSocket.h; sourceTree = "<group>"; };
+		E64135921C28D21B009C8148 /* MMWebSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMWebSocket.m; sourceTree = "<group>"; };
 		E644D3AB1BFA53100034C0D2 /* MEME.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MEME.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E644D3C11BFA539A0034C0D2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E644D3C21BFA539A0034C0D2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E644D3C71BFA539A0034C0D2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E644D3C91BFA539A0034C0D2 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E690BCFD1BFA6A6C002BE584 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E6F54EE11BFA5A7300051BB0 /* MMConstant-Private.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MMConstant-Private.swift"; sourceTree = "<group>"; };
 		E6F54EE31BFA5A8B00051BB0 /* MMConstant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MMConstant.swift; sourceTree = "<group>"; };
 		E6F54EEA1BFA5F6A00051BB0 /* MEMELib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MEMELib.framework; path = Frameworks/MEMELib.framework; sourceTree = "<group>"; };
 		E6F54EED1BFA607600051BB0 /* MEME-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MEME-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -57,17 +68,50 @@
 			buildActionMask = 2147483647;
 			files = (
 				E690BCFF1BFA6C64002BE584 /* MEMELib.framework in Frameworks */,
+				7BF505D1AB10C96CF8D007FD /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A985494B4E941C937E2C40D6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				510B827E212CA8AB15C9C7BB /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B8372AE70F4CD6BB7F5FB8C9 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A041ADCDF939E88A4B1BA4B8 /* Pods.debug.xcconfig */,
+				138186CB54DE476C844CA24B /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E641358B1C28C0ED009C8148 /* MEMEServer */ = {
+			isa = PBXGroup;
+			children = (
+				E641358C1C28C116009C8148 /* MMServer.h */,
+				E641358D1C28C116009C8148 /* MMServer.m */,
+				E641358F1C28D21B009C8148 /* MMHTTPConnection.h */,
+				E64135901C28D21B009C8148 /* MMHTTPConnection.m */,
+				E64135911C28D21B009C8148 /* MMWebSocket.h */,
+				E64135921C28D21B009C8148 /* MMWebSocket.m */,
+			);
+			path = MEMEServer;
+			sourceTree = "<group>";
+		};
 		E644D3A21BFA53100034C0D2 = {
 			isa = PBXGroup;
 			children = (
 				E644D3AD1BFA53100034C0D2 /* MEME */,
 				E644D3AC1BFA53100034C0D2 /* Products */,
+				B8372AE70F4CD6BB7F5FB8C9 /* Pods */,
+				A985494B4E941C937E2C40D6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,11 +137,11 @@
 			isa = PBXGroup;
 			children = (
 				E6F54EED1BFA607600051BB0 /* MEME-Bridging-Header.h */,
-				E6F54EE11BFA5A7300051BB0 /* MMConstant-Private.swift */,
 				E6F54EE31BFA5A8B00051BB0 /* MMConstant.swift */,
 				E644D3C11BFA539A0034C0D2 /* AppDelegate.swift */,
 				E644D3C21BFA539A0034C0D2 /* LaunchScreen.storyboard */,
 				E690BCFD1BFA6A6C002BE584 /* Main.storyboard */,
+				E641358B1C28C0ED009C8148 /* MEMEServer */,
 				E644D3C41BFA539A0034C0D2 /* Root */,
 				E690BCF01BFA685B002BE584 /* Data */,
 			);
@@ -154,10 +198,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E644D3BD1BFA53100034C0D2 /* Build configuration list for PBXNativeTarget "MEME" */;
 			buildPhases = (
+				40ED0FC439160AEEA2E16FD7 /* Check Pods Manifest.lock */,
 				E644D3A71BFA53100034C0D2 /* Sources */,
 				E644D3A81BFA53100034C0D2 /* Frameworks */,
 				E644D3A91BFA53100034C0D2 /* Resources */,
 				E690BD011BFA6C64002BE584 /* Embed Frameworks */,
+				C1FE595A3CB98CE048927C8C /* Embed Pods Frameworks */,
+				0D7C3F63B85008C65AE5A0E8 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -215,14 +262,64 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0D7C3F63B85008C65AE5A0E8 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		40ED0FC439160AEEA2E16FD7 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		C1FE595A3CB98CE048927C8C /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E644D3A71BFA53100034C0D2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E6F54EE21BFA5A7300051BB0 /* MMConstant-Private.swift in Sources */,
+				E64135941C28D21B009C8148 /* MMWebSocket.m in Sources */,
 				E644D3CA1BFA539A0034C0D2 /* AppDelegate.swift in Sources */,
+				E641358E1C28C116009C8148 /* MMServer.m in Sources */,
 				E61A9B1C1BFD0605000BEF7D /* MMDataViewController.m in Sources */,
+				E64135931C28D21B009C8148 /* MMHTTPConnection.m in Sources */,
 				E61A9B191BFD0557000BEF7D /* MMViewController.m in Sources */,
 				E6F54EE41BFA5A8B00051BB0 /* MMConstant.swift in Sources */,
 			);
@@ -314,6 +411,7 @@
 		};
 		E644D3BE1BFA53100034C0D2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A041ADCDF939E88A4B1BA4B8 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -335,6 +433,7 @@
 		};
 		E644D3BF1BFA53100034C0D2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 138186CB54DE476C844CA24B /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

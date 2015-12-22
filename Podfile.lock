@@ -1,1 +1,30 @@
-COCOAPODS: 0.37.1
+PODS:
+  - CocoaAsyncSocket (7.4.2)
+  - CocoaHTTPServer (2.3):
+    - CocoaAsyncSocket
+    - CocoaLumberjack
+  - CocoaLumberjack (2.2.0):
+    - CocoaLumberjack/Default (= 2.2.0)
+    - CocoaLumberjack/Extensions (= 2.2.0)
+  - CocoaLumberjack/Core (2.2.0)
+  - CocoaLumberjack/Default (2.2.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.2.0):
+    - CocoaLumberjack/Default
+  - jetfire (0.1.5)
+  - RoutingHTTPServer (1.0.0):
+    - CocoaHTTPServer (~> 2.3)
+
+DEPENDENCIES:
+  - CocoaHTTPServer
+  - jetfire
+  - RoutingHTTPServer
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: f5783bdedd232d91b89769bc4b5a1580aed518ad
+  CocoaHTTPServer: 5624681fc3473d43b18202f635f9b3abb013b530
+  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
+  jetfire: 60c16cd6ae0282928e24203eb93f03b89c1929ce
+  RoutingHTTPServer: fab8b13e725f26720500c146d43c98c11ebc4d47
+
+COCOAPODS: 0.39.0
