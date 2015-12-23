@@ -1,4 +1,4 @@
-# JINS MEME iPhone API Server
+# JINS MEME iOS API Server
 
 
 ## Installation
@@ -88,59 +88,4 @@ responseBody: {"api":"getConnectedDeviceType", "return":MEMEType}
 
 API: /getConnectedDeviceSubType
 responseBody: {"api":"getConnectedDeviceSubType", "return":MEMEType}
-```
-
-### MEMELibDelegate
-
-It's implemented by Web Socket Server.
-
-```
-socketMessage: {
-    "delegate":"memePeripheralFound:withDeviceAddress:",
-    "args":[PERIPHERALS_UUID_STRING, ADDRESS_STRING]
-}
-
-socketMessage: {
-    "delegate":"memePeripheralConnected:",
-    "args":[PERIPHERALS_UUID_STRING]
-}
-
-socketMessage: {
-    "delegate":"memePeripheralDisconnected:",
-    "args":[PERIPHERALS_UUID_STRING]
-}
-
-socketMessage: {
-    "delegate":"memeRealTimeModeDataReceived:",
-    "args":[{
-        "fitError":(REAL_TIME_DATA.fitError),
-       "isWalking":(REAL_TIME_DATA.isWalking),
-       "powerLeft":(REAL_TIME_DATA.powerLeft),
-       "eyeMoveUp":(REAL_TIME_DATA.eyeMoveUp),
-     "eyeMoveDown":(REAL_TIME_DATA.eyeMoveDown),
-     "eyeMoveLeft":(REAL_TIME_DATA.eyeMoveLeft),
-    "eyeMoveRight":(REAL_TIME_DATA.eyeMoveRight),
-      "blinkSpeed":(REAL_TIME_DATA.blinkSpeed),
-   "blinkStrength":(REAL_TIME_DATA.blinkStrength),
-            "roll":(REAL_TIME_DATA.roll),
-           "pitch":(REAL_TIME_DATA.pitch),
-             "yaw":(REAL_TIME_DATA.yaw),
-            "accX":(REAL_TIME_DATA.accX),
-            "accY":(REAL_TIME_DATA.accY),
-            "accZ":(REAL_TIME_DATA.accZ)
-    }]
-}
-
-socketMessage: {
-    "delegate":"memeAppAuthorized:",
-    "args":[MEMEStatus]
-}
-
-socketMessage: {
-    "delegate":"memeCommandResponse:",
-    "args":[{
-        "eventCode":(MEMEResponse.eventCode),
-        "commandResult":(MEMEResponse.commandResult),
-    }]
-}
 ```
