@@ -8,7 +8,7 @@
 
 #import "MMViewController.h"
 #import <MEMELib/MEMELib.h>
-#import "MMServer.h"
+#import "MEMEBridge.h"
 
 
 @interface MMViewController ()

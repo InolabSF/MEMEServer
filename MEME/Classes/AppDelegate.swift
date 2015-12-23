@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// MARK: - life cycle
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        MMServer.sharedInstance().start()
+        MEMEBridge.sharedInstance().start()
         
         return true
     }
@@ -22,11 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        MMServer.sharedInstance().stop()
+        MEMEBridge.sharedInstance().stop()
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        MMServer.sharedInstance().start()
+        MEMEBridge.sharedInstance().start()
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
