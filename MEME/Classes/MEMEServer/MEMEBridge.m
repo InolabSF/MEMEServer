@@ -42,8 +42,6 @@
         peripheralManagingQueue = dispatch_queue_create("MEMEBridge.peripheralManagingQueue", NULL);
 
         // server
-	    //[self setConnectionClass:[MMHTTPConnection class]];
-	    //[self setType:@"_http._tcp."];
         [self setPort:3000];
         [self setDefaultHeader:@"content-type" value:@"application/json"];
 
@@ -61,11 +59,12 @@
             BOOL isCalibrated = [[MEMELib sharedInstance] isCalibrated];
             [response respondWithString:[NSString stringWithFormat:@"%@", @(isCalibrated)]];
         }];
-        [self get:@"/setApplicationId:clientSecret:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+        [self get:@"/setAppClientId:clientSecret:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
             NSString *appClientId = request.params[@"arg0"];
             NSString *clientSecret = request.params[@"arg1"];
             [MEMELib setAppClientId:appClientId clientSecret:clientSecret];
             [response respondWithString:@"void"];
+            [[MEMELib sharedInstance] setDelegate:bself];
         }];
         [self get:@"/startScanningPeripherals" withBlock:^ (RouteRequest *request, RouteResponse *response) {
             MEMEStatus status = [[MEMELib sharedInstance] startScanningPeripherals];
@@ -177,8 +176,6 @@
             [bself requestDelegate:@"memeCommandResponse:" arguments:@[@"0",@"1"]];
         }];
         //
-
-        [[MEMELib sharedInstance] setDelegate:self];
     }
     return self;
 }
