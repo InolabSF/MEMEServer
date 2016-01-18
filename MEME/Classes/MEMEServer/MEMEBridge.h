@@ -1,7 +1,7 @@
 #import <RoutingHTTPServer/RoutingHTTPServer.h>
 
 
-#define kMEMEServerURL @"http://kenzan8000.local:3000/"
+#define kMEMEServerURL @"http://192.168.1.101:3000/"
 
 
 #pragma mark - interface

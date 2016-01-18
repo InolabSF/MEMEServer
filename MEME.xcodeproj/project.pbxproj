@@ -14,7 +14,6 @@
 		E644D3CA1BFA539A0034C0D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E644D3C11BFA539A0034C0D2 /* AppDelegate.swift */; };
 		E644D3CB1BFA539A0034C0D2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E644D3C21BFA539A0034C0D2 /* LaunchScreen.storyboard */; };
 		E644D3CE1BFA539A0034C0D2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E644D3C71BFA539A0034C0D2 /* Assets.xcassets */; };
-		E644D3CF1BFA539A0034C0D2 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E644D3C91BFA539A0034C0D2 /* Info.plist */; };
 		E690BCFE1BFA6A6C002BE584 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E690BCFD1BFA6A6C002BE584 /* Main.storyboard */; };
 		E690BCFF1BFA6C64002BE584 /* MEMELib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6F54EEA1BFA5F6A00051BB0 /* MEMELib.framework */; };
 		E690BD001BFA6C64002BE584 /* MEMELib.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E6F54EEA1BFA5F6A00051BB0 /* MEMELib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -243,7 +242,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E644D3CF1BFA539A0034C0D2 /* Info.plist in Resources */,
 				E644D3CB1BFA539A0034C0D2 /* LaunchScreen.storyboard in Resources */,
 				E644D3CE1BFA539A0034C0D2 /* Assets.xcassets in Resources */,
 				E690BCFE1BFA6A6C002BE584 /* Main.storyboard in Resources */,
