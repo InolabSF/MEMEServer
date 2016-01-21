@@ -27,7 +27,10 @@
 }
 
 #pragma mark - property
+
 @property (nonatomic, strong) NSMutableArray *peripherals;
+@property (nonatomic, copy) NSString *clientID;
+@property (nonatomic, copy) NSString *clientSecret;
 
 @end
 
@@ -111,17 +114,23 @@
 {
     [self get:@"/setAppClientId:clientSecret:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
         NSLog(@"Server received %@", request.url);
+        NSString *appClientId = request.params[@"arg0"];
+        NSString *clientSecret = request.params[@"arg1"];
+        BOOL same = [self.clientID isEqualToString:appClientId] && [self.clientSecret isEqualToString:clientSecret];
+        
         if ([self isAuthorizationPending]) {
-            [response setStatusCode:400];
+            if (!same) {
+                [response setStatusCode:400];
+            }
             [response respondWithString:@"SDK authorization already pending"];
         }
         else if ([self isAuthorized]) {
-            [response setStatusCode:400];
+            if (!same) {
+                [response setStatusCode:400];
+            }
             [response respondWithString:@"SDK already authorized"];
         }
         else {
-            NSString *appClientId = request.params[@"arg0"];
-            NSString *clientSecret = request.params[@"arg1"];
             [self setAuthorizedPending:YES];
             [MEMELib setAppClientId:appClientId clientSecret:clientSecret];
             [response respondWithString:@"void"];
@@ -162,7 +171,7 @@
     }];
     [self get:@"/stopScanningPeripherals" withBlock:^ (RouteRequest *request, RouteResponse *response) {
         NSLog(@"Server received %@", request.url);
-        MEMEStatus status = [[MEMELib sharedInstance] startScanningPeripherals];
+        MEMEStatus status = [[MEMELib sharedInstance] stopScanningPeripherals];
         [response respondWithString:[NSString stringWithFormat:@"%@", @(status)]];
     }];
     [self get:@"/connectPeripheral:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
@@ -286,6 +295,8 @@
         _authorized = NO;
         _peripherals = @[].mutableCopy;
         _synchronizationQueue = dispatch_queue_create("MEMEBridge.peripheralManagingQueue", DISPATCH_QUEUE_SERIAL);
+        _clientID = nil;
+        _clientSecret = nil;
 
         // server
         [self setPort:3000];
