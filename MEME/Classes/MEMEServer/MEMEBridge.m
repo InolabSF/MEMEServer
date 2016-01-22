@@ -323,10 +323,11 @@
 }
 
 #pragma mark - MEMELibDelegate
+
 - (void)memePeripheralFound:(CBPeripheral *)peripheral
           withDeviceAddress:(NSString *)address
 {
-    NSLog(@"Server memePeripheralFound: %@", peripheral.identifier);
+    NSLog(@"Server delegate called memePeripheralFound: %@", peripheral.identifier);
     [self addPeripheralIfNew:peripheral];
     [self requestDelegate:@"memePeripheralFound:withDeviceAddress"
                 arguments:@[[peripheral.identifier UUIDString], address]];
@@ -334,21 +335,21 @@
 
 - (void)memePeripheralConnected:(CBPeripheral *)peripheral
 {
-    NSLog(@"Server memePeripheralConnected: %@", peripheral.identifier);
+    NSLog(@"Server delegate called memePeripheralConnected: %@", peripheral.identifier);
     [self requestDelegate:@"memePeripheralConnected"
                 arguments:@[[peripheral.identifier UUIDString]]];
 }
 
 - (void)memePeripheralDisconnected:(CBPeripheral *)peripheral
 {
-    NSLog(@"Server memePeripheralDisconnected: %@", peripheral.identifier);
+    NSLog(@"Server delegate called memePeripheralDisconnected: %@", peripheral.identifier);
     [self requestDelegate:@"memePeripheralDisconnected"
                 arguments:@[[peripheral.identifier UUIDString]]];
 }
 
 - (void)memeRealTimeModeDataReceived:(MEMERealTimeData *)data
 {
-    NSLog(@"Server realTimeModeDataReceived");
+    NSLog(@"Server delegate called realTimeModeDataReceived");
     NSArray *realTimeData = @[
         [NSString stringWithFormat:@"%@", @(data.fitError)],
         [NSString stringWithFormat:@"%@", @(data.isWalking)],
@@ -372,7 +373,7 @@
 
 - (void)memeAppAuthorized:(MEMEStatus)status
 {
-    NSLog(@"Server memeAppAuthorized");
+    NSLog(@"Server delegate called memeAppAuthorized");
     if (status == MEME_OK) {
         [self setAuthorized:YES];
         [self setAuthorizedPending:NO];
@@ -384,7 +385,7 @@
 
 - (void)memeCommandResponse:(MEMEResponse)response
 {
-    NSLog(@"Server memeCommandResponse: %d/%@", response.eventCode, @(response.commandResult));
+    NSLog(@"Server delegate called memeCommandResponse: %d/%@", response.eventCode, @(response.commandResult));
     NSArray *r = @[
         [NSString stringWithFormat:@"%@", @(response.eventCode)],
         [NSString stringWithFormat:@"%@", @(response.commandResult)],
