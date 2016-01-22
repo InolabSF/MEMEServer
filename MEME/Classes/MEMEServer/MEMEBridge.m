@@ -112,7 +112,7 @@
 
 - (void) serverAddInitialRoutes
 {
-    [self get:@"/setAppClientId:clientSecret:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+    [self get:@"/setAppClientId:clientSecret" withBlock:^ (RouteRequest *request, RouteResponse *response) {
         NSLog(@"Server received %@", request.url);
         NSString *appClientId = request.params[@"arg0"];
         NSString *clientSecret = request.params[@"arg1"];
@@ -131,6 +131,8 @@
             [response respondWithString:@"SDK already authorized"];
         }
         else {
+            self.clientID = appClientId;
+            self.clientSecret = clientSecret;
             [self setAuthorizedPending:YES];
             [MEMELib setAppClientId:appClientId clientSecret:clientSecret];
             [response respondWithString:@"void"];
@@ -156,7 +158,7 @@
         MEMECalibStatus isCalibrated = [[MEMELib sharedInstance] isCalibrated];
         [response respondWithString:[NSString stringWithFormat:@"%@", @(isCalibrated)]];
     }];
-    [self get:@"/setAppClientId:clientSecret:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+    [self get:@"/setAppClientId:clientSecret" withBlock:^ (RouteRequest *request, RouteResponse *response) {
         NSLog(@"Server received %@", request.url);
         NSString *appClientId = request.params[@"arg0"];
         NSString *clientSecret = request.params[@"arg1"];
@@ -174,13 +176,17 @@
         MEMEStatus status = [[MEMELib sharedInstance] stopScanningPeripherals];
         [response respondWithString:[NSString stringWithFormat:@"%@", @(status)]];
     }];
-    [self get:@"/connectPeripheral:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+    [self get:@"/connectPeripheral" withBlock:^ (RouteRequest *request, RouteResponse *response) {
         NSLog(@"Server received %@", request.url);
         CBPeripheral *peripheral = [self findPeripheral:request.params[@"arg0"]];
         // Can only connect if previously seen
         if (peripheral != nil) {
             MEMEStatus status = [[MEMELib sharedInstance] connectPeripheral:peripheral];
-            dispatch_async(connectionQueue, ^{ [response respondWithString:[NSString stringWithFormat:@"%@", @(status)]]; });
+            [response respondWithString:[NSString stringWithFormat:@"%@", @(status)]];
+            //dispatch_async(connectionQueue, ^{ [response respondWithString:[NSString stringWithFormat:@"%@", @(status)]]; });
+        }
+        else {
+            NSLog(@"Attempt to connect previously unseen peripheral");
         }
     }];
     [self get:@"/disconnectPeripheral" withBlock:^ (RouteRequest *request, RouteResponse *response) {
@@ -235,22 +241,22 @@
     }];
     
     // Delegate test
-    [self get:@"/memeAppAuthorized:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
-        [self requestDelegate:@"memeAppAuthorized:" arguments:@[@"0"]];
+    [self get:@"/memeAppAuthorized" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+        [self requestDelegate:@"memeAppAuthorized" arguments:@[@"0"]];
     }];
-    [self get:@"/memeFirmwareAuthorized:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
-        [self requestDelegate:@"memeFirmwareAuthorized:" arguments:@[@"0"]];
+    [self get:@"/memeFirmwareAuthorized" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+        [self requestDelegate:@"memeFirmwareAuthorized" arguments:@[@"0"]];
     }];
-    [self get:@"/memePeripheralFound:withDeviceAddress:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
-        [self requestDelegate:@"memePeripheralFound:withDeviceAddress:" arguments:@[@"398315C3-0734-400E-9639-6490BAD79086", @"address"]];
+    [self get:@"/memePeripheralFound:withDeviceAddress" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+        [self requestDelegate:@"memePeripheralFound:withDeviceAddress" arguments:@[@"398315C3-0734-400E-9639-6490BAD79086", @"address"]];
     }];
-    [self get:@"/memePeripheralConnected:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
-        [self requestDelegate:@"memePeripheralConnected:" arguments:@[@"398315C3-0734-400E-9639-6490BAD79086"]];
+    [self get:@"/memePeripheralConnected" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+        [self requestDelegate:@"memePeripheralConnected" arguments:@[@"398315C3-0734-400E-9639-6490BAD79086"]];
     }];
-    [self get:@"/memePeripheralDisconnected:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
-        [self requestDelegate:@"memePeripheralDisconnected:" arguments:@[@"398315C3-0734-400E-9639-6490BAD79086"]];
+    [self get:@"/memePeripheralDisconnected" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+        [self requestDelegate:@"memePeripheralDisconnected" arguments:@[@"398315C3-0734-400E-9639-6490BAD79086"]];
     }];
-    [self get:@"/memeRealTimeModeDataReceived:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+    [self get:@"/memeRealTimeModeDataReceived" withBlock:^ (RouteRequest *request, RouteResponse *response) {
         NSArray *realTimeData = @[
                                   @"1",
                                   @"2",
@@ -268,10 +274,10 @@
                                   @"2",
                                   @"3",
                                   ];
-        [self requestDelegate:@"memeRealTimeModeDataReceived:" arguments:realTimeData];
+        [self requestDelegate:@"memeRealTimeModeDataReceived" arguments:realTimeData];
     }];
-    [self get:@"/memeCommandResponse:" withBlock:^ (RouteRequest *request, RouteResponse *response) {
-        [self requestDelegate:@"memeCommandResponse:" arguments:@[@"0",@"1"]];
+    [self get:@"/memeCommandResponse" withBlock:^ (RouteRequest *request, RouteResponse *response) {
+        [self requestDelegate:@"memeCommandResponse" arguments:@[@"0",@"1"]];
     }];
 }
 
@@ -322,21 +328,21 @@
 {
     NSLog(@"Server memePeripheralFound: %@", peripheral.identifier);
     [self addPeripheralIfNew:peripheral];
-    [self requestDelegate:@"memePeripheralFound:withDeviceAddress:"
+    [self requestDelegate:@"memePeripheralFound:withDeviceAddress"
                 arguments:@[[peripheral.identifier UUIDString], address]];
 }
 
 - (void)memePeripheralConnected:(CBPeripheral *)peripheral
 {
     NSLog(@"Server memePeripheralConnected: %@", peripheral.identifier);
-    [self requestDelegate:@"memePeripheralConnected:"
+    [self requestDelegate:@"memePeripheralConnected"
                 arguments:@[[peripheral.identifier UUIDString]]];
 }
 
 - (void)memePeripheralDisconnected:(CBPeripheral *)peripheral
 {
     NSLog(@"Server memePeripheralDisconnected: %@", peripheral.identifier);
-    [self requestDelegate:@"memePeripheralDisconnected:"
+    [self requestDelegate:@"memePeripheralDisconnected"
                 arguments:@[[peripheral.identifier UUIDString]]];
 }
 
@@ -360,7 +366,7 @@
         [NSString stringWithFormat:@"%@", @(data.accY)],
         [NSString stringWithFormat:@"%@", @(data.accZ)],
     ];
-    [self requestDelegate:@"memeRealTimeModeDataReceived:"
+    [self requestDelegate:@"memeRealTimeModeDataReceived"
                 arguments:realTimeData];
 }
 
@@ -372,7 +378,7 @@
         [self setAuthorizedPending:NO];
         [self serverAddAuthorizedRoutes];
     }
-    [self requestDelegate:@"memeAppAuthorized:"
+    [self requestDelegate:@"memeAppAuthorized"
                 arguments:@[[NSString stringWithFormat:@"%@", @(status)]]];
 }
 
@@ -383,7 +389,7 @@
         [NSString stringWithFormat:@"%@", @(response.eventCode)],
         [NSString stringWithFormat:@"%@", @(response.commandResult)],
     ];
-    [self requestDelegate:@"memeCommandResponse:"
+    [self requestDelegate:@"memeCommandResponse"
                 arguments:r];
 }
 
