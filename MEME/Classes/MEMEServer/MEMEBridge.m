@@ -305,8 +305,10 @@
         _clientSecret = nil;
 
         // server
-        [self setPort:3000];
-        [self setDefaultHeader:@"content-type" value:@"application/json"];
+        self.port = 3000;
+        self.type = @"_memebridge._tcp.";
+        [self setDefaultHeader:@"content-type"
+                         value:@"application/json"];
 
         [self serverAddInitialRoutes];
     }
