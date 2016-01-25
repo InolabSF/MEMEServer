@@ -13,6 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     /// MARK: - life cycle
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        UIApplication.sharedApplication().idleTimerDisabled = true
         MEMEBridge.sharedInstance().start()
         
         return true
